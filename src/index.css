@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #FFF7ED;
+    color: #1C1C1C;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .menu-card {
+    @apply bg-white rounded-2xl shadow-md overflow-hidden transition-all duration-300 ease-out cursor-pointer;
+  }
+
+  .menu-card:hover {
+    @apply shadow-xl -translate-y-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 hover:bg-primary-800 hover:shadow-glow-red active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 hover:bg-secondary-700 hover:shadow-glow-orange active:scale-95;
+  }
+
+  .filter-tab {
+    @apply px-4 py-2 rounded-full font-semibold text-sm transition-all duration-200 border-2;
+  }
+
+  .filter-tab.active {
+    @apply bg-primary text-white border-primary shadow-md;
+  }
+
+  .filter-tab.inactive {
+    @apply bg-white text-gray-600 border-gray-200 hover:border-primary hover:text-primary;
+  }
+
+  .badge-terlaris {
+    @apply bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-0.5 rounded-full;
+  }
+
+  .badge-pedas {
+    @apply bg-red-100 text-red-700 text-xs font-semibold px-2 py-0.5 rounded-full;
+  }
+
+  .cart-item-row {
+    @apply flex items-center justify-between gap-2 py-2 border-b border-orange-100 last:border-0;
+  }
+
+  .qty-btn {
+    @apply w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-150 active:scale-90;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 3px 3px 12px rgba(0,0,0,0.5);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, #7F1D1D 0%, #B91C1C 30%, #EA580C 70%, #C2410C 100%);
+  }
+
+  .gradient-card-footer {
+    background: linear-gradient(to top, rgba(185,28,28,0.9), transparent);
+  }
+
+  .pattern-batik {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF7ED;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #EA580C;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B91C1C;
+}
+
+/* Smooth number transitions in cart */
+.cart-count {
+  transition: transform 0.15s ease;
+}
+
+/* Animate cart items */
+.cart-item-enter {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
