@@ -12,10 +12,7 @@ const contactLinks = [
     sublabel: 'Buka di Google Maps',
     href: CONTACT_INFO.googleMaps,
     emoji: '📍',
-    color: 'from-blue-500 to-blue-700',
-    bg: 'bg-blue-50',
-    text: 'text-blue-700',
-    border: 'border-blue-200',
+    color: 'bg-primary-600',
   },
   {
     id: 'instagram',
@@ -23,10 +20,7 @@ const contactLinks = [
     sublabel: 'Ikuti di Instagram',
     href: CONTACT_INFO.instagram,
     emoji: '📸',
-    color: 'from-pink-500 via-purple-500 to-orange-400',
-    bg: 'bg-pink-50',
-    text: 'text-pink-700',
-    border: 'border-pink-200',
+    color: 'bg-primary-700',
   },
   {
     id: 'tiktok',
@@ -34,10 +28,7 @@ const contactLinks = [
     sublabel: 'Tonton di TikTok',
     href: CONTACT_INFO.tiktok,
     emoji: '🎵',
-    color: 'from-gray-800 to-gray-600',
-    bg: 'bg-gray-50',
-    text: 'text-gray-800',
-    border: 'border-gray-200',
+    color: 'bg-secondary',
   },
   {
     id: 'whatsapp',
@@ -45,10 +36,7 @@ const contactLinks = [
     sublabel: 'Order & Tanya Langsung',
     href: CONTACT_INFO.whatsappLink,
     emoji: '💬',
-    color: 'from-green-500 to-green-700',
-    bg: 'bg-green-50',
-    text: 'text-green-700',
-    border: 'border-green-200',
+    color: 'bg-primary',
   },
 ];
 
@@ -56,45 +44,47 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-16 px-4 md:px-8 bg-white"
+      className="py-16 md:py-24 px-4 md:px-8 relative"
       aria-label="Informasi Kontak Mie Marmoyo"
     >
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto max-w-5xl relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
-          <span className="inline-block bg-primary-50 text-primary font-bold text-sm px-4 py-1.5 rounded-full mb-4 border border-primary-100">
+        <div className="text-center mb-16">
+          <span className="inline-block bg-primary text-white font-bold text-sm px-6 py-2 rounded-full mb-6 border-2 border-primary-700 shadow-sm uppercase tracking-widest">
             📞 Hubungi Kami
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h2 className="text-4xl md:text-5xl font-black text-secondary tracking-widest uppercase text-shadow-solid" style={{ fontFamily: 'Fredoka, Nunito, sans-serif' }}>
             Temukan & <span className="text-primary">Ikuti Kami</span>
           </h2>
-          <p className="text-gray-500 mt-3 max-w-md mx-auto">
+          <p className="text-secondary/80 mt-4 max-w-md mx-auto text-lg leading-relaxed font-medium">
             Kunjungi langsung, ikuti update terbaru, atau langsung order via WhatsApp!
           </p>
         </div>
 
         {/* Contact Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {contactLinks.map((link) => (
             <a
               key={link.id}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group flex flex-col items-center text-center p-6 rounded-2xl border-2 ${link.bg} ${link.border} hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+              className="group flex flex-col items-center text-center p-8 rounded-3xl border-4 border-primary/10 bg-cream shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:border-primary/40 relative overflow-hidden"
               aria-label={link.sublabel}
             >
+              <div className="absolute inset-0 pattern-oriental opacity-10 pointer-events-none" />
+              
               {/* Icon */}
-              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${link.color} flex items-center justify-center text-2xl mb-4 shadow-md group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-16 h-16 rounded-full ${link.color} text-white flex items-center justify-center text-3xl mb-5 shadow-solid group-hover:scale-110 transition-transform duration-300 relative z-10 border-2 border-cream`}>
                 {link.emoji}
               </div>
 
               {/* Label */}
-              <p className={`font-bold text-base ${link.text} mb-1`}>{link.label}</p>
-              <p className="text-gray-500 text-sm">{link.sublabel}</p>
+              <p className="font-black text-base text-secondary mb-1.5 uppercase tracking-wide relative z-10">{link.label}</p>
+              <p className="text-secondary/70 text-sm font-bold relative z-10">{link.sublabel}</p>
 
               {/* Arrow */}
-              <span className={`mt-3 text-xs font-semibold ${link.text} opacity-0 group-hover:opacity-100 transition-opacity duration-200`}>
+              <span className="mt-4 text-xs font-black text-primary uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-200 relative z-10">
                 Kunjungi →
               </span>
             </a>
@@ -102,20 +92,22 @@ export default function ContactSection() {
         </div>
 
         {/* Hours Info */}
-        <div className="mt-10 bg-orange-50 border border-orange-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="text-3xl">🕙</div>
+        <div className="mt-12 bg-cream border-4 border-primary/20 shadow-md rounded-3xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
+          <div className="absolute inset-0 pattern-oriental opacity-10 pointer-events-none" />
+          
+          <div className="flex items-center gap-4 relative z-10">
+            <div className="text-5xl drop-shadow-md">🕙</div>
             <div>
-              <p className="font-bold text-gray-900">Jam Operasional</p>
-              <p className="text-gray-600 text-sm">Selasa – Minggu, 10.00 – 21.00 WIB</p>
-              <p className="text-primary text-sm font-semibold">⛔ Senin Libur</p>
+              <p className="font-black text-secondary text-xl mb-1 uppercase tracking-wider" style={{ fontFamily: 'Fredoka, Nunito, sans-serif' }}>Jam Operasional</p>
+              <p className="text-secondary/90 font-bold tracking-wide">Selasa – Minggu, 10.00 – 21.00 WIB</p>
+              <p className="text-primary text-sm font-black mt-2 tracking-widest uppercase bg-primary/10 inline-block px-3 py-1 rounded-full border border-primary/20">⛔ Senin Libur</p>
             </div>
           </div>
           <a
             href={CONTACT_INFO.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-primary text-white font-bold py-3 px-6 rounded-xl hover:bg-primary-800 transition-all duration-200 hover:shadow-glow-red active:scale-95 whitespace-nowrap"
+            className="inline-flex items-center justify-center gap-2 btn-primary whitespace-nowrap w-full sm:w-auto text-lg relative z-10"
           >
             💬 Order Sekarang
           </a>

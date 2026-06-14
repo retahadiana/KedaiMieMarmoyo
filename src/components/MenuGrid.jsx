@@ -25,14 +25,14 @@ export default function MenuGrid({ onAddToCart }) {
       />
 
       {/* Item Count */}
-      <p className="text-center text-gray-400 text-sm mb-6">
-        Menampilkan <span className="font-semibold text-gray-600">{filteredItems.length}</span> item
+      <p className="text-center text-secondary/60 text-sm mb-8 font-bold tracking-widest uppercase">
+        Menampilkan <span className="font-black text-secondary">{filteredItems.length}</span> item
       </p>
 
       {/* Grid */}
       {filteredItems.length > 0 ? (
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 lg:gap-10"
           role="list"
           aria-label="Daftar Menu"
         >
@@ -47,10 +47,10 @@ export default function MenuGrid({ onAddToCart }) {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 text-gray-400">
-          <div className="text-5xl mb-4">🍽️</div>
-          <p className="font-medium">Menu tidak ditemukan</p>
-          <p className="text-sm">Coba pilih kategori lain</p>
+        <div className="text-center py-20 text-secondary/40">
+          <div className="text-6xl mb-5 opacity-50">🍽️</div>
+          <p className="font-black text-lg text-secondary/60 uppercase tracking-widest">Menu tidak ditemukan</p>
+          <p className="text-sm mt-1 font-medium">Coba pilih kategori lain</p>
         </div>
       )}
     </div>

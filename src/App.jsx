@@ -34,123 +34,105 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-orange-50">
-      {/* ── Sticky Navbar ─────────────────────────────────── */}
-      <Navbar totalQty={totalQty} onCartClick={() => setCartOpen((prev) => !prev)} />
+    <div className="min-h-screen bg-cream pattern-oriental p-1 sm:p-2 md:p-4">
+      <div className="bg-cream oriental-border shadow-2xl flex flex-col min-h-[calc(100vh-8px)] sm:min-h-[calc(100vh-16px)] md:min-h-[calc(100vh-32px)]">
+        {/* ── Sticky Navbar ─────────────────────────────────── */}
+        <Navbar totalQty={totalQty} onCartClick={() => setCartOpen((prev) => !prev)} />
 
-      {/* ── Hero Banner ───────────────────────────────────── */}
-      <HeroBanner />
+        {/* ── Hero Banner ───────────────────────────────────── */}
+        <HeroBanner />
 
-      {/* ── Contact Info ──────────────────────────────────── */}
-      <ContactSection />
+        {/* ── Contact Info ──────────────────────────────────── */}
+        <ContactSection />
 
-      {/* ── Menu Section ──────────────────────────────────── */}
-      <section
-        id="menu"
-        className="py-16 px-4 md:px-8 bg-orange-50"
-        aria-labelledby="menu-heading"
-      >
-        <div className="container mx-auto max-w-7xl">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <span className="inline-block bg-primary text-white font-bold text-sm px-4 py-1.5 rounded-full mb-4">
-              🍜 Daftar Menu
-            </span>
-            <h2
-              id="menu-heading"
-              className="text-3xl md:text-5xl font-black text-gray-900 mb-3"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              Menu <span className="text-primary">Pilihan</span> Kami
-            </h2>
-            <p className="text-gray-500 max-w-lg mx-auto">
-              Pilih menu favoritmu, tambahkan ke keranjang, dan langsung order via WhatsApp! 🔥
-            </p>
-          </div>
+        {/* ── Menu Section ──────────────────────────────────── */}
+        <section
+          id="menu"
+          className="py-16 md:py-24 px-4 md:px-8 relative"
+          aria-labelledby="menu-heading"
+        >
+          <div className="container mx-auto max-w-7xl relative z-10">
+            {/* Section Header */}
+            <div className="text-center mb-16">
+              <span className="inline-block bg-primary text-white font-bold text-sm px-6 py-2 rounded-full mb-6 shadow-sm tracking-widest uppercase">
+                🍜 Daftar Menu
+              </span>
+              <h2
+                id="menu-heading"
+                className="text-4xl md:text-6xl font-black text-primary mb-6 tracking-wide drop-shadow-sm uppercase"
+                style={{ fontFamily: 'Fredoka, Nunito, sans-serif' }}
+              >
+                MIE MARMOYO
+              </h2>
+              <p className="text-secondary max-w-lg mx-auto text-lg font-medium">
+                Pilih menu favoritmu, tambahkan ke keranjang, dan langsung order via WhatsApp! 🔥
+              </p>
+            </div>
 
-          {/* ── Two-column layout: Menu + Cart ─────────────── */}
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
-            {/* Menu Grid — takes majority of space */}
-            <div className="flex-1 min-w-0">
+            {/* ── Menu Grid ──────────────────────────────────── */}
+            <div className="w-full">
               <MenuGrid onAddToCart={handleAddToCart} />
             </div>
-
-            {/* Cart Panel — sticky sidebar on desktop */}
-            <div className={`
-              w-full lg:w-80 xl:w-96 flex-shrink-0
-              transition-all duration-300
-              lg:sticky lg:top-20
-              ${cartOpen
-                ? 'block'
-                : 'hidden lg:block'
-              }
-            `}>
-              <CartPanel
-                cartList={cartList}
-                totalQty={totalQty}
-                totalPrice={totalPrice}
-                onAdd={addToCart}
-                onRemove={removeFromCart}
-                onClear={clearCart}
-                buildWhatsAppMessage={buildWhatsAppMessage}
-              />
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── Mobile Cart Overlay ────────────────────────────── */}
-      {cartOpen && (
-        <div
-          className="fixed inset-0 z-40 lg:hidden bg-black bg-opacity-50 backdrop-blur-sm"
-          onClick={() => setCartOpen(false)}
-          aria-label="Tutup keranjang"
-        >
+        {/* ── Cart Pop-up Overlay ────────────────────────────── */}
+        {cartOpen && (
           <div
-            className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-transparent"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-50 bg-secondary/80 backdrop-blur-sm transition-opacity duration-300"
+            onClick={() => setCartOpen(false)}
+            aria-label="Tutup keranjang"
           >
-            <div className="h-full pt-16 p-4 flex flex-col">
-              <div className="flex-1">
-                <CartPanel
-                  cartList={cartList}
-                  totalQty={totalQty}
-                  totalPrice={totalPrice}
-                  onAdd={addToCart}
-                  onRemove={removeFromCart}
-                  onClear={clearCart}
-                  buildWhatsAppMessage={buildWhatsAppMessage}
-                />
+            <div
+              className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-transparent animate-fade-in-up"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="h-full p-4 md:p-6 flex flex-col">
+                <div className="flex-1">
+                  <CartPanel
+                    cartList={cartList}
+                    totalQty={totalQty}
+                    totalPrice={totalPrice}
+                    onAdd={addToCart}
+                    onRemove={removeFromCart}
+                    onClear={clearCart}
+                    buildWhatsAppMessage={buildWhatsAppMessage}
+                  />
+                </div>
+                <button
+                  className="mt-4 w-full py-4 rounded-xl bg-white text-primary font-black shadow-xl border-2 border-primary/20 active:scale-95 transition-all hover:bg-red-50 uppercase tracking-widest"
+                  onClick={() => setCartOpen(false)}
+                >
+                  ✕ Tutup Keranjang
+                </button>
               </div>
-              <button
-                className="mt-3 w-full py-3 rounded-xl bg-gray-800 bg-opacity-80 text-white font-semibold"
-                onClick={() => setCartOpen(false)}
-              >
-                ✕ Tutup Keranjang
-              </button>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* ── Floating Cart Button (mobile) ──────────────────── */}
-      {totalQty > 0 && (
-        <button
-          onClick={() => setCartOpen(true)}
-          className="fixed bottom-6 right-6 z-30 lg:hidden bg-primary text-white rounded-2xl px-5 py-3.5 shadow-2xl flex items-center gap-2 font-bold hover:bg-primary-800 active:scale-95 transition-all duration-200 animate-fade-in"
-          aria-label={`Buka keranjang, ${totalQty} item`}
-          id="mobile-cart-fab"
-        >
-          <span className="text-xl">🛒</span>
-          <span>{totalQty} item</span>
-          <span className="bg-yellow-400 text-yellow-900 font-black text-xs px-2 py-0.5 rounded-full">
-            Checkout
-          </span>
-        </button>
-      )}
+        {/* ── Floating Cart Button ──────────────────── */}
+        {totalQty > 0 && (
+          <button
+            onClick={() => setCartOpen(true)}
+            className="fixed bottom-6 right-6 z-30 bg-primary text-white rounded-full px-6 py-4 shadow-[0_10px_40px_-10px_rgba(176,38,38,0.6)] flex items-center gap-3 font-bold hover:bg-primary-600 active:scale-95 transition-all duration-200 animate-fade-in-up border-2 border-white"
+            aria-label={`Buka keranjang, ${totalQty} item`}
+            id="mobile-cart-fab"
+          >
+            <span className="text-xl relative">
+              🛒
+              <span className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center leading-none border-2 border-white">
+                {totalQty}
+              </span>
+            </span>
+            <span className="bg-yellow-400 text-yellow-900 font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+              Checkout
+            </span>
+          </button>
+        )}
 
-      {/* ── Footer ────────────────────────────────────────── */}
-      <Footer />
+        {/* ── Footer ────────────────────────────────────────── */}
+        <Footer />
+      </div>
     </div>
   );
 }

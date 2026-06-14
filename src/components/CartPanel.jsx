@@ -25,18 +25,20 @@ export default function CartPanel({
 
   return (
     <aside
-      className="bg-white rounded-2xl shadow-xl border border-orange-100 overflow-hidden flex flex-col h-full"
+      className="bg-cream rounded-3xl shadow-soft border-[4px] border-primary/20 overflow-hidden flex flex-col h-full relative"
       aria-label="Keranjang Belanja"
     >
+      <div className="absolute inset-0 pattern-oriental opacity-30 pointer-events-none" />
+      
       {/* Panel Header */}
-      <div className="gradient-hero px-5 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="text-2xl">🛒</span>
-          <h2 className="font-black text-white text-lg" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Keranjang
+      <div className="bg-primary px-6 py-5 flex items-center justify-between relative z-10 border-b-[4px] border-primary-800/50">
+        <div className="flex items-center gap-3">
+          <span className="text-2xl drop-shadow-sm">🛒</span>
+          <h2 className="font-black text-white text-xl tracking-widest uppercase" style={{ fontFamily: 'Fredoka, Nunito, sans-serif' }}>
+            Pesanan
           </h2>
           {totalQty > 0 && (
-            <span className="bg-yellow-400 text-yellow-900 font-black text-xs px-2 py-0.5 rounded-full min-w-[22px] text-center">
+            <span className="bg-yellow-400 text-yellow-900 font-black text-xs px-2.5 py-1 rounded-full min-w-[24px] text-center shadow-sm border border-yellow-200">
               {totalQty}
             </span>
           )}
@@ -44,51 +46,51 @@ export default function CartPanel({
         {!isEmpty && (
           <button
             onClick={onClear}
-            className="text-white text-opacity-70 hover:text-opacity-100 text-xs font-semibold transition-opacity"
+            className="text-white/80 hover:text-white text-xs font-bold transition-colors uppercase tracking-wider bg-black/20 hover:bg-black/30 px-3 py-1.5 rounded-lg border border-transparent hover:border-white/20"
             aria-label="Kosongkan keranjang"
           >
-            🗑️ Kosongkan
+            Kosongkan
           </button>
         )}
       </div>
 
       {/* Cart Items */}
-      <div className="flex-1 overflow-y-auto px-4 py-3 min-h-[200px] max-h-[400px] lg:max-h-none">
+      <div className="flex-1 overflow-y-auto px-5 py-4 min-h-[250px] max-h-[400px] lg:max-h-[500px] relative z-10 bg-cream/90 backdrop-blur-sm">
         {isEmpty ? (
-          <div className="flex flex-col items-center justify-center h-full text-center py-12 text-gray-400">
-            <span className="text-5xl mb-3 opacity-50">🍜</span>
-            <p className="font-semibold text-gray-500">Keranjang masih kosong</p>
-            <p className="text-sm mt-1">Tambahkan menu favoritmu!</p>
+          <div className="flex flex-col items-center justify-center h-full text-center py-16">
+            <span className="text-6xl mb-4 opacity-40">🍜</span>
+            <p className="font-bold text-secondary text-lg uppercase tracking-wide">Keranjang Kosong</p>
+            <p className="text-sm text-secondary/70 mt-1 font-medium">Tambahkan menu pilihanmu!</p>
           </div>
         ) : (
-          <ul className="space-y-0" aria-label="Item dalam keranjang">
+          <ul className="space-y-2" aria-label="Item dalam keranjang">
             {cartList.map(({ item, qty }) => (
-              <li key={item.id} className="cart-item-row cart-item-enter">
+              <li key={item.id} className="cart-item-row cart-item-enter py-4 border-b-2 border-primary/10 last:border-0">
                 {/* Item info */}
-                <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-gray-900 text-sm leading-tight truncate">
+                <div className="flex-1 min-w-0 pr-2">
+                  <p className="font-bold text-secondary text-sm leading-tight truncate mb-0.5 uppercase tracking-wide">
                     {item.emoji} {item.name}
                   </p>
-                  <p className="text-gray-400 text-xs">
-                    {formatPrice(item.price)} / porsi
+                  <p className="text-secondary/60 text-[11px] uppercase tracking-wider font-bold">
+                    {formatPrice(item.price)}
                   </p>
                 </div>
 
                 {/* Qty controls */}
-                <div className="flex items-center gap-1.5 flex-shrink-0">
+                <div className="flex items-center gap-1 flex-shrink-0">
                   <button
                     onClick={() => onRemove(item.id)}
-                    className="qty-btn bg-red-50 text-primary hover:bg-red-100 border border-red-200"
+                    className="qty-btn"
                     aria-label={`Kurangi ${item.name}`}
                   >
                     −
                   </button>
-                  <span className="cart-count w-8 text-center font-black text-gray-900 text-sm">
+                  <span className="cart-count w-8 text-center font-black text-secondary text-sm">
                     {qty}
                   </span>
                   <button
                     onClick={() => onAdd(item)}
-                    className="qty-btn bg-primary text-white hover:bg-primary-800"
+                    className="qty-btn"
                     aria-label={`Tambah ${item.name}`}
                   >
                     +
@@ -96,8 +98,8 @@ export default function CartPanel({
                 </div>
 
                 {/* Subtotal */}
-                <div className="text-right flex-shrink-0 min-w-[70px]">
-                  <p className="text-primary font-bold text-sm">
+                <div className="text-right flex-shrink-0 min-w-[75px]">
+                  <p className="text-primary font-black text-sm">
                     {formatPrice(item.price * qty)}
                   </p>
                 </div>
@@ -108,11 +110,11 @@ export default function CartPanel({
       </div>
 
       {/* Total & Checkout */}
-      <div className="border-t border-orange-100 px-4 py-4 bg-orange-50 space-y-4">
+      <div className="border-t-[4px] border-primary/20 px-6 py-5 bg-cream relative z-10 space-y-5">
         {/* Total */}
         <div className="flex items-center justify-between">
-          <span className="text-gray-600 font-semibold">Total Pesanan</span>
-          <span className="text-primary font-black text-xl">
+          <span className="text-secondary font-bold uppercase tracking-widest text-sm">Total Pesanan</span>
+          <span className="text-primary font-black text-2xl">
             {formatPrice(totalPrice)}
           </span>
         </div>
@@ -121,21 +123,21 @@ export default function CartPanel({
         <button
           onClick={handleCheckout}
           disabled={isEmpty}
-          className={`w-full py-3.5 rounded-xl font-black text-base flex items-center justify-center gap-2 transition-all duration-200 ${
+          className={`w-full py-4 rounded-2xl font-black text-base flex items-center justify-center gap-2 transition-all duration-300 shadow-sm border-2 ${
             isEmpty
-              ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              : 'bg-green-500 text-white hover:bg-green-600 active:scale-95 hover:shadow-lg'
+              ? 'bg-cream-dark/50 text-secondary/40 border-secondary/10 cursor-not-allowed'
+              : 'bg-primary text-white border-primary hover:bg-primary-600 active:scale-95 hover:shadow-lg hover:shadow-primary/30'
           }`}
           aria-label="Kirim pesanan ke WhatsApp"
         >
           <span className="text-xl">💬</span>
-          <span>Kirim Pesanan ke WhatsApp</span>
+          <span className="uppercase tracking-wider">Order via WhatsApp</span>
         </button>
 
         {/* Helper text */}
         {!isEmpty && (
-          <p className="text-center text-xs text-gray-400">
-            Pesananmu akan dikirim otomatis ke WhatsApp Mie Marmoyo
+          <p className="text-center text-[10px] text-secondary/60 font-bold uppercase tracking-widest">
+            Pesanan dikirim ke WhatsApp Mie Marmoyo
           </p>
         )}
       </div>

@@ -2,12 +2,33 @@
 // DATA MENU - Semua data hardcoded untuk deployment statis
 // ============================================================
 
+// Import semua gambar menu
+import imgMieCharsiu    from '../assets/menu/mie-charsiu.png';
+import imgMieMala       from '../assets/menu/mie-mala.png';
+import imgMieTomyam     from '../assets/menu/mie-tomyam.png';
+import imgMieGurih      from '../assets/menu/mie-gurih.png';
+import imgMieGurihOri   from '../assets/menu/mie-gurih-ori.png';
+import imgMieManis      from '../assets/menu/mie-manis.png';
+import imgMieManisOri   from '../assets/menu/mie-manis-ori.png';
+import imgCekerPedas    from '../assets/menu/ceker-pedas.png';
+import imgDimsum        from '../assets/menu/dimsum.png';
+import imgWonton        from '../assets/menu/wonton.png';
+import imgUdangKeju     from '../assets/menu/udang-keju.png';
+import imgUdangRambutan from '../assets/menu/udang-rambutan.png';
+import imgAyamNori      from '../assets/menu/ayam-nori.png';
+import imgEsHijau       from '../assets/menu/es-hijau-merambat.png';
+import imgEsMerah       from '../assets/menu/es-merah-merona.png';
+import imgCoklat        from '../assets/menu/coklat-kuentel.png';
+import imgEsJeruk       from '../assets/menu/es-jeruk.png';
+import imgEsTeh         from '../assets/menu/es-teh.png';
+import imgEsTehSusu     from '../assets/menu/es-teh-susu.png';
+
 export const CATEGORIES = [
-  { id: 'semua', label: 'Semua', emoji: '🍜' },
-  { id: 'pedas', label: 'Pedas', emoji: '🌶️' },
-  { id: 'mie-goreng', label: 'Mie Goreng', emoji: '🥢' },
+  { id: 'semua',     label: 'Semua',     emoji: '🍜' },
+  { id: 'pedas',     label: 'Pedas',     emoji: '🌶️' },
+  { id: 'mie-goreng',label: 'Mie',       emoji: '🥢' },
   { id: 'side-dish', label: 'Side Dish', emoji: '🥟' },
-  { id: 'minuman', label: 'Minuman', emoji: '🥤' },
+  { id: 'minuman',   label: 'Minuman',   emoji: '🥤' },
 ];
 
 export const MENU_ITEMS = [
@@ -19,9 +40,9 @@ export const MENU_ITEMS = [
     price: 15000,
     category: 'mie-goreng',
     tags: ['mie-kuah'],
-    isSpicy: true,
+    isSpicy: false,
     isPopular: false,
-    emoji: '🍜',
+    image: imgMieCharsiu,
   },
   {
     id: 2,
@@ -32,7 +53,7 @@ export const MENU_ITEMS = [
     tags: ['mie-kuah'],
     isSpicy: true,
     isPopular: true,
-    emoji: '🔥',
+    image: imgMieMala,
   },
   {
     id: 3,
@@ -43,7 +64,7 @@ export const MENU_ITEMS = [
     tags: ['mie-kuah'],
     isSpicy: true,
     isPopular: false,
-    emoji: '🍲',
+    image: imgMieTomyam,
   },
   // ── Mie Goreng ────────────────────────────────────────────
   {
@@ -55,7 +76,7 @@ export const MENU_ITEMS = [
     tags: ['goreng'],
     isSpicy: true,
     isPopular: true,
-    emoji: '🥢',
+    image: imgMieGurih,
   },
   {
     id: 5,
@@ -66,7 +87,7 @@ export const MENU_ITEMS = [
     tags: ['goreng'],
     isSpicy: true,
     isPopular: false,
-    emoji: '🌶️',
+    image: imgMieGurih,
   },
   {
     id: 6,
@@ -77,7 +98,7 @@ export const MENU_ITEMS = [
     tags: ['goreng'],
     isSpicy: true,
     isPopular: true,
-    emoji: '🥢',
+    image: imgMieManis,
   },
   {
     id: 7,
@@ -88,7 +109,7 @@ export const MENU_ITEMS = [
     tags: ['goreng'],
     isSpicy: true,
     isPopular: false,
-    emoji: '🌶️',
+    image: imgMieManis,
   },
   {
     id: 8,
@@ -99,7 +120,7 @@ export const MENU_ITEMS = [
     tags: ['goreng'],
     isSpicy: false,
     isPopular: false,
-    emoji: '🥢',
+    image: imgMieGurihOri,
   },
   {
     id: 9,
@@ -110,7 +131,7 @@ export const MENU_ITEMS = [
     tags: ['goreng'],
     isSpicy: false,
     isPopular: false,
-    emoji: '🥢',
+    image: imgMieManisOri,
   },
   // ── Side Dish ─────────────────────────────────────────────
   {
@@ -122,7 +143,7 @@ export const MENU_ITEMS = [
     tags: ['side-dish'],
     isSpicy: true,
     isPopular: false,
-    emoji: '🍗',
+    image: imgCekerPedas,
   },
   {
     id: 11,
@@ -133,7 +154,7 @@ export const MENU_ITEMS = [
     tags: ['side-dish'],
     isSpicy: false,
     isPopular: false,
-    emoji: '🥟',
+    image: imgDimsum,
   },
   {
     id: 12,
@@ -144,7 +165,7 @@ export const MENU_ITEMS = [
     tags: ['side-dish'],
     isSpicy: false,
     isPopular: true,
-    emoji: '🥟',
+    image: imgWonton,
   },
   {
     id: 13,
@@ -155,7 +176,7 @@ export const MENU_ITEMS = [
     tags: ['side-dish'],
     isSpicy: false,
     isPopular: false,
-    emoji: '🍤',
+    image: imgUdangKeju,
   },
   {
     id: 14,
@@ -166,7 +187,7 @@ export const MENU_ITEMS = [
     tags: ['side-dish'],
     isSpicy: false,
     isPopular: false,
-    emoji: '🍤',
+    image: imgUdangRambutan,
   },
   {
     id: 15,
@@ -177,7 +198,7 @@ export const MENU_ITEMS = [
     tags: ['side-dish'],
     isSpicy: false,
     isPopular: false,
-    emoji: '🍗',
+    image: imgAyamNori,
   },
   // ── Minuman ───────────────────────────────────────────────
   {
@@ -189,7 +210,7 @@ export const MENU_ITEMS = [
     tags: ['minuman'],
     isSpicy: false,
     isPopular: false,
-    emoji: '🍵',
+    image: imgEsHijau,
   },
   {
     id: 17,
@@ -200,7 +221,7 @@ export const MENU_ITEMS = [
     tags: ['minuman'],
     isSpicy: false,
     isPopular: false,
-    emoji: '🍹',
+    image: imgEsMerah,
   },
   {
     id: 18,
@@ -211,7 +232,7 @@ export const MENU_ITEMS = [
     tags: ['minuman'],
     isSpicy: false,
     isPopular: true,
-    emoji: '🍫',
+    image: imgCoklat,
   },
   {
     id: 19,
@@ -222,7 +243,7 @@ export const MENU_ITEMS = [
     tags: ['minuman'],
     isSpicy: false,
     isPopular: false,
-    emoji: '🍊',
+    image: imgEsJeruk,
   },
   {
     id: 20,
@@ -233,7 +254,7 @@ export const MENU_ITEMS = [
     tags: ['minuman'],
     isSpicy: false,
     isPopular: false,
-    emoji: '🍵',
+    image: imgEsTeh,
   },
   {
     id: 21,
@@ -244,15 +265,15 @@ export const MENU_ITEMS = [
     tags: ['minuman'],
     isSpicy: false,
     isPopular: false,
-    emoji: '🧋',
+    image: imgEsTehSusu,
   },
 ];
 
 // Jam operasional
 export const OPERATIONAL_HOURS = {
-  open: 10,      // 10:00 WIB
-  close: 21,     // 21:00 WIB
-  closedDay: 1,  // 1 = Senin (Monday)
+  open: 10,
+  close: 21,
+  closedDay: 1, // Senin
 };
 
 // Kontak & Sosial Media
@@ -267,4 +288,8 @@ export const CONTACT_INFO = {
 };
 
 export const formatPrice = (price) =>
-  new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(price);
+  new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+  }).format(price);
