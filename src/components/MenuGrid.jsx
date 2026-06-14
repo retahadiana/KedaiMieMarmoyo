@@ -25,9 +25,13 @@ export default function MenuGrid({ onAddToCart }) {
       />
 
       {/* Item Count */}
-      <p className="text-center text-secondary/60 text-sm mb-8 font-bold tracking-widest uppercase">
-        Menampilkan <span className="font-black text-secondary">{filteredItems.length}</span> item
-      </p>
+      <div className="flex items-center justify-center gap-4 mb-12">
+        <div className="h-px w-10 md:w-16 bg-secondary/10"></div>
+        <p className="text-secondary/50 text-xs md:text-sm font-black tracking-[0.2em] uppercase">
+          Menampilkan <span className="text-primary">{filteredItems.length}</span> Menu Pilihan
+        </p>
+        <div className="h-px w-10 md:w-16 bg-secondary/10"></div>
+      </div>
 
       {/* Grid */}
       {filteredItems.length > 0 ? (

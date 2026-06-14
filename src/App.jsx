@@ -48,25 +48,36 @@ export default function App() {
         {/* ── Menu Section ──────────────────────────────────── */}
         <section
           id="menu"
-          className="py-16 md:py-24 px-4 md:px-8 relative"
+          className="pt-4 pb-16 md:pt-8 md:pb-24 px-4 md:px-8 relative"
           aria-labelledby="menu-heading"
         >
           <div className="container mx-auto max-w-7xl relative z-10">
             {/* Section Header */}
-            <div className="text-center mb-16">
-              <span className="inline-block bg-primary text-white font-bold text-sm px-6 py-2 rounded-full mb-6 shadow-sm tracking-widest uppercase">
-                🍜 Daftar Menu
-              </span>
-              <h2
-                id="menu-heading"
-                className="text-4xl md:text-6xl font-black text-primary mb-6 tracking-wide drop-shadow-sm uppercase"
-                style={{ fontFamily: 'Fredoka, Nunito, sans-serif' }}
-              >
-                MIE MARMOYO
-              </h2>
-              <p className="text-secondary max-w-lg mx-auto text-lg font-medium">
-                Pilih menu favoritmu, tambahkan ke keranjang, dan langsung order via WhatsApp! 🔥
-              </p>
+            <div className="flex flex-col items-center mb-12 md:mb-16 relative">
+              {/* Background Watermark */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] select-none overflow-hidden">
+                <span className="text-[6rem] sm:text-[10rem] md:text-[14rem] tracking-tight leading-none font-black text-secondary whitespace-nowrap">MARMOYO</span>
+              </div>
+              
+              <div className="relative z-10 text-center w-full">
+                <div className="flex items-center justify-center gap-4 mb-4">
+                  <div className="h-0.5 w-12 md:w-24 bg-primary/20 rounded-full"></div>
+                  <span className="text-primary font-black text-sm tracking-[0.3em] uppercase">
+                    Pilihan Spesial
+                  </span>
+                  <div className="h-0.5 w-12 md:w-24 bg-primary/20 rounded-full"></div>
+                </div>
+                <h2
+                  id="menu-heading"
+                  className="text-5xl md:text-7xl font-black text-secondary mb-6 uppercase tracking-tight"
+                  style={{ fontFamily: 'Fredoka, Nunito, sans-serif' }}
+                >
+                  Daftar <span className="text-primary">Menu</span>
+                </h2>
+                <p className="text-secondary/60 max-w-xl mx-auto text-lg md:text-xl font-medium">
+                  Eksplorasi hidangan khas kami, tambahkan ke keranjang, dan pesan langsung tanpa ribet via WhatsApp. 🔥
+                </p>
+              </div>
             </div>
 
             {/* ── Menu Grid ──────────────────────────────────── */}
@@ -114,17 +125,17 @@ export default function App() {
         {totalQty > 0 && (
           <button
             onClick={() => setCartOpen(true)}
-            className="fixed bottom-6 right-6 z-30 bg-primary text-white rounded-full px-6 py-4 shadow-[0_10px_40px_-10px_rgba(176,38,38,0.6)] flex items-center gap-3 font-bold hover:bg-primary-600 active:scale-95 transition-all duration-200 animate-fade-in-up border-2 border-white"
+            className="group fixed bottom-6 right-6 z-30 bg-primary text-white rounded-full px-6 py-4 shadow-[0_10px_40px_-10px_rgba(176,38,38,0.6)] hover:shadow-[0_20px_40px_-10px_rgba(176,38,38,0.8)] hover:-translate-y-2 flex items-center gap-3 font-bold hover:bg-primary-600 active:scale-95 transition-all duration-300 animate-fade-in-up border-2 border-white"
             aria-label={`Buka keranjang, ${totalQty} item`}
             id="mobile-cart-fab"
           >
-            <span className="text-xl relative">
+            <span className="text-xl relative inline-block group-hover:rotate-12 transition-transform duration-300">
               🛒
-              <span className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center leading-none border-2 border-white">
+              <span className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center leading-none border-2 border-white group-hover:animate-pulse">
                 {totalQty}
               </span>
             </span>
-            <span className="bg-yellow-400 text-yellow-900 font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+            <span className="bg-yellow-400 text-yellow-900 font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider group-hover:bg-white group-hover:text-primary transition-colors duration-300">
               Checkout
             </span>
           </button>

@@ -1,4 +1,8 @@
 import { CONTACT_INFO } from '../data/menuData';
+import whatsappLogo from '../assets/whatsapp.png';
+import instagramLogo from '../assets/instagram.png';
+import tiktokLogo from '../assets/tiktok.png';
+import mapsLogo from '../assets/maps.png';
 
 // ============================================================
 // Component: ContactSection
@@ -7,36 +11,32 @@ import { CONTACT_INFO } from '../data/menuData';
 
 const contactLinks = [
   {
-    id: 'maps',
-    label: 'Temukan Kami',
-    sublabel: 'Buka di Google Maps',
-    href: CONTACT_INFO.googleMaps,
-    emoji: '📍',
-    color: 'bg-primary-600',
+    id: 'whatsapp',
+    label: 'Order WA',
+    sublabel: 'Pesan Langsung',
+    href: CONTACT_INFO.whatsappLink,
+    logo: whatsappLogo,
   },
   {
     id: 'instagram',
-    label: CONTACT_INFO.instagramHandle,
-    sublabel: 'Ikuti di Instagram',
+    label: 'Instagram',
+    sublabel: CONTACT_INFO.instagramHandle,
     href: CONTACT_INFO.instagram,
-    emoji: '📸',
-    color: 'bg-primary-700',
+    logo: instagramLogo,
   },
   {
     id: 'tiktok',
-    label: CONTACT_INFO.tiktokHandle,
-    sublabel: 'Tonton di TikTok',
+    label: 'TikTok',
+    sublabel: CONTACT_INFO.tiktokHandle,
     href: CONTACT_INFO.tiktok,
-    emoji: '🎵',
-    color: 'bg-secondary',
+    logo: tiktokLogo,
   },
   {
-    id: 'whatsapp',
-    label: 'Chat WhatsApp',
-    sublabel: 'Order & Tanya Langsung',
-    href: CONTACT_INFO.whatsappLink,
-    emoji: '💬',
-    color: 'bg-primary',
+    id: 'maps',
+    label: 'Lokasi',
+    sublabel: 'Buka Google Maps',
+    href: CONTACT_INFO.googleMaps,
+    logo: mapsLogo,
   },
 ];
 
@@ -44,73 +44,90 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-16 md:py-24 px-4 md:px-8 relative"
+      className="pt-24 pb-12 md:pt-32 md:pb-16 px-4 md:px-8 relative overflow-hidden"
       aria-label="Informasi Kontak Mie Marmoyo"
     >
-      <div className="container mx-auto max-w-5xl relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block bg-primary text-white font-bold text-sm px-6 py-2 rounded-full mb-6 border-2 border-primary-700 shadow-sm uppercase tracking-widest">
-            📞 Hubungi Kami
-          </span>
-          <h2 className="text-4xl md:text-5xl font-black text-secondary tracking-widest uppercase text-shadow-solid" style={{ fontFamily: 'Fredoka, Nunito, sans-serif' }}>
-            Temukan & <span className="text-primary">Ikuti Kami</span>
-          </h2>
-          <p className="text-secondary/80 mt-4 max-w-md mx-auto text-lg leading-relaxed font-medium">
-            Kunjungi langsung, ikuti update terbaru, atau langsung order via WhatsApp!
-          </p>
-        </div>
-
-        {/* Contact Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {contactLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center text-center p-8 rounded-3xl border-4 border-primary/10 bg-cream shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:border-primary/40 relative overflow-hidden"
-              aria-label={link.sublabel}
-            >
-              <div className="absolute inset-0 pattern-oriental opacity-10 pointer-events-none" />
-              
-              {/* Icon */}
-              <div className={`w-16 h-16 rounded-full ${link.color} text-white flex items-center justify-center text-3xl mb-5 shadow-solid group-hover:scale-110 transition-transform duration-300 relative z-10 border-2 border-cream`}>
-                {link.emoji}
-              </div>
-
-              {/* Label */}
-              <p className="font-black text-base text-secondary mb-1.5 uppercase tracking-wide relative z-10">{link.label}</p>
-              <p className="text-secondary/70 text-sm font-bold relative z-10">{link.sublabel}</p>
-
-              {/* Arrow */}
-              <span className="mt-4 text-xs font-black text-primary uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-200 relative z-10">
-                Kunjungi →
-              </span>
-            </a>
-          ))}
-        </div>
-
-        {/* Hours Info */}
-        <div className="mt-12 bg-cream border-4 border-primary/20 shadow-md rounded-3xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
-          <div className="absolute inset-0 pattern-oriental opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 pattern-oriental opacity-[0.03] pointer-events-none" />
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           
-          <div className="flex items-center gap-4 relative z-10">
-            <div className="text-5xl drop-shadow-md">🕙</div>
-            <div>
-              <p className="font-black text-secondary text-xl mb-1 uppercase tracking-wider" style={{ fontFamily: 'Fredoka, Nunito, sans-serif' }}>Jam Operasional</p>
-              <p className="text-secondary/90 font-bold tracking-wide">Selasa – Minggu, 10.00 – 21.00 WIB</p>
-              <p className="text-primary text-sm font-black mt-2 tracking-widest uppercase bg-primary/10 inline-block px-3 py-1 rounded-full border border-primary/20">⛔ Senin Libur</p>
+          {/* Left Side: Title & Hours */}
+          <div className="lg:w-5/12 flex flex-col justify-between">
+            <div className="sticky top-32">
+              <span className="inline-block text-primary font-black text-sm tracking-[0.3em] uppercase mb-6">
+                Hubungi Kami
+              </span>
+              <h2 className="text-5xl md:text-7xl font-black text-secondary uppercase leading-[1.1]" style={{ fontFamily: 'Fredoka, Nunito, sans-serif' }}>
+                Tetap<br />
+                <span className="text-primary relative inline-block mt-2">
+                  Terhubung
+                  <span className="absolute -bottom-2 left-0 w-1/2 h-2 bg-yellow-400 -z-10 rounded-full"></span>
+                </span>
+              </h2>
+              <p className="text-secondary/70 mt-8 max-w-sm text-lg leading-relaxed font-medium">
+                Kunjungi kedai kami, ikuti update terbaru di sosial media, atau langsung pesan menu favoritmu sekarang tanpa ribet.
+              </p>
+
+              {/* Minimalist Hours */}
+              <div className="mt-16 bg-white/50 backdrop-blur-sm border border-secondary/10 p-8 rounded-3xl">
+                <h3 className="text-xs font-black text-secondary tracking-[0.2em] uppercase mb-6 opacity-60">Jam Operasional</h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-end border-b border-secondary/10 pb-3">
+                    <span className="font-bold text-secondary text-lg">Selasa – Minggu</span>
+                    <span className="font-black text-primary text-lg">10:00 - 21:00</span>
+                  </div>
+                  <div className="flex justify-between items-end pb-1 pt-2">
+                    <span className="font-bold text-secondary text-lg">Senin</span>
+                    <span className="font-black text-red-600 bg-red-50 px-3 py-1 rounded-md uppercase tracking-widest text-xs">Tutup</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <a
-            href={CONTACT_INFO.whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 btn-primary whitespace-nowrap w-full sm:w-auto text-lg relative z-10"
-          >
-            💬 Order Sekarang
-          </a>
+
+          {/* Right Side: Huge Typographic Links */}
+          <div className="lg:w-7/12 flex flex-col justify-center">
+            <div className="border-t-2 border-secondary/10"></div>
+            {contactLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block border-b-2 border-secondary/10 py-10 md:py-12 transition-all duration-500 hover:border-primary relative overflow-hidden"
+              >
+                {/* Background hover reveal */}
+                <div className="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                
+                <div className="flex items-center justify-between relative z-10 px-4 md:px-6">
+                  <div className="flex items-center gap-6 md:gap-10">
+                    <img
+                      src={link.logo}
+                      alt={link.label}
+                      className="w-12 h-12 md:w-16 md:h-16 object-contain rounded-xl grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 transform"
+                    />
+                    <div>
+                      <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-secondary group-hover:text-primary transition-colors duration-500 uppercase tracking-tight">
+                        {link.label}
+                      </h3>
+                      <p className="mt-3 text-secondary/50 font-bold tracking-[0.2em] uppercase text-xs md:text-sm group-hover:text-primary/70 transition-colors duration-500">
+                        {link.sublabel}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Arrow Button */}
+                  <div className="w-14 h-14 md:w-20 md:h-20 rounded-full border-2 border-secondary/20 flex items-center justify-center text-secondary group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:shadow-lg">
+                    <svg className="w-6 h-6 md:w-8 md:h-8 transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>

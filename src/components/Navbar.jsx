@@ -32,44 +32,47 @@ export default function Navbar({ totalQty, onCartClick }) {
       aria-label="Navigasi Utama"
     >
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a href="#hero" className="flex items-center gap-2" aria-label="Mie Marmoyo - Beranda">
-            <img
-              src={logoImg}
-              alt="Logo Mie Marmoyo"
-              className="h-10 md:h-12 w-auto object-contain transition-all duration-300 drop-shadow-md"
-            />
-          </a>
+        <div className="grid grid-cols-3 items-center h-16 md:h-20 gap-4">
+          {/* Logo (Left) */}
+          <div className="flex justify-start">
+            <a href="#hero" className="flex items-center" aria-label="Mie Marmoyo - Beranda">
+              <img
+                src={logoImg}
+                alt="Logo Mie Marmoyo"
+                className="h-8 md:h-11 w-auto max-w-[180px] md:max-w-[240px] object-contain transition-all duration-300 drop-shadow-sm"
+              />
+            </a>
+          </div>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-2">
+          {/* Desktop Nav Links (Center) */}
+          <div className="hidden md:flex flex-none items-center justify-center gap-4 lg:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 rounded-xl font-bold text-sm transition-all duration-200 text-secondary hover:text-primary hover:bg-primary/10 uppercase tracking-widest"
+                className="group relative py-2 font-bold text-sm lg:text-base text-secondary hover:text-primary transition-colors duration-300 uppercase tracking-widest whitespace-nowrap"
               >
                 {link.label}
+                <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary -translate-x-1/2 transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </div>
 
           {/* Right side: Cart + WA Button */}
-          <div className="flex items-center gap-3">
+          <div className="flex-1 flex items-center justify-end gap-3 lg:gap-4">
             {/* Cart Button */}
             <button
               onClick={onCartClick}
-              className={`relative p-2.5 rounded-xl font-bold transition-all duration-200 border-2 active:scale-95 ${scrolled
+              className={`group relative p-2 md:p-3 rounded-xl font-bold transition-all duration-300 border-2 active:scale-95 hover:shadow-[0_8px_20px_-6px_rgba(176,38,38,0.4)] hover:-translate-y-0.5 ${scrolled
                   ? 'bg-primary text-white border-primary shadow-sm hover:bg-primary-600'
-                  : 'bg-cream text-primary border-primary shadow-sm hover:bg-primary/10'
+                  : 'bg-cream text-primary border-primary shadow-sm hover:bg-primary/5'
                 }`}
               aria-label={`Keranjang belanja, ${totalQty} item`}
               id="cart-toggle-btn"
             >
-              <span className="text-xl">🛒</span>
+              <span className="text-lg md:text-xl inline-block group-hover:rotate-12 transition-transform duration-300">🛒</span>
               {totalQty > 0 && (
-                <span className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 text-[10px] font-black w-6 h-6 rounded-full flex items-center justify-center leading-none shadow-sm border-2 border-white">
+                <span className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 text-[10px] md:text-xs font-black w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center leading-none shadow-md border-2 border-white group-hover:animate-pulse">
                   {totalQty > 9 ? '9+' : totalQty}
                 </span>
               )}
@@ -80,7 +83,7 @@ export default function Navbar({ totalQty, onCartClick }) {
               href={CONTACT_INFO.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 btn-primary"
+              className="hidden sm:inline-flex items-center gap-1.5 btn-primary text-sm md:text-base px-3 md:px-5 py-2 md:py-2.5"
             >
               💬 Order WA
             </a>
